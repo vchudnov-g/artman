@@ -264,7 +264,8 @@ def normalize_flags(flags, user_config):
     """Combine the argparse flags and user configuration together.
 
     Args:
-        flags (argparse.Namespace): The flags parsed from sys.argv
+        flags (argparse.Namespace): The flags parsed from sys.argv, which may
+                                    be mutated in this function.
         user_config (dict): The user configuration taken from
                             ~/.artman/config.yaml.
 
