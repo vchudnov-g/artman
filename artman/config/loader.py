@@ -67,11 +67,11 @@ def _parse(artman_yaml_path):
 
 
 def _validate_artman_config(config_pb):
-    """ Validate the parsed config_pb.
+    """Validate the parsed config_pb.
 
-    Currently, it checkes the uniqueness of the artifact name, and uniqieuness
-    of publishing target name in each artifact. Plus, it makes sure the
-    specified configuration or other input file or folder exists.
+    Currently, it checks the uniqueness of the artifact name and of
+    the publishing target name in each artifact. It also makes sure
+    the specified configuration and input files and directories exist.
     """
     artifacts = set()
     for artifact in config_pb.artifacts:
