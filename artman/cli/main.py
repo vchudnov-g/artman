@@ -153,6 +153,15 @@ def parse_args(*args):
         'will be raised with instructions.',
     )
     parser.add_argument(
+        '--toolkit-dir',
+        type=str,
+        default='',
+        help='[Optional] Local directory containing the local clone of the '
+        'github/toolkit repo to use, instead of the one specified in the '
+        'configuration files. This flag is useful for testing development '
+        'changes to toolkit via an artman invocation.',
+    )
+    parser.add_argument(
         '-v',
         '--verbose',
         action='store_const',
@@ -397,6 +406,9 @@ def normalize_flags(flags, user_config):
                 'Publishing type `%s` is not supported yet.' %
                 Artifact.PublishTarget.Type.Name(publishing_config.type))
             sys.exit(96)
+
+    if flags.toolkit_dir:
+      pipeline_args['toolkit_path'] = flags.toolkit_dir
 
     # Print out the final arguments to stdout, to help the user with
     # possible debugging.
