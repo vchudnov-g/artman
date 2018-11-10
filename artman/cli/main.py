@@ -165,7 +165,8 @@ def parse_args(*args):
         '--image',
         default=ARTMAN_DOCKER_IMAGE,
         help=('[Optional] Specify docker image used by artman when running in '
-              'a Docker instance. Default to `%s`' % ARTMAN_DOCKER_IMAGE)),
+              'a Docker instance. Default to `%s`' % ARTMAN_DOCKER_IMAGE))
+
 
     # Add sub-commands.
     subparsers = parser.add_subparsers(
@@ -184,6 +185,11 @@ def parse_args(*args):
         type=str,
         default=None,
         help='[Optional] Aspect of output to generate: ALL, CODE, or PACKAGE')
+
+    parser.add_argument(
+        '--generator_args',
+        type=str,
+        help='Additional arguments to pass to gapic-generator')
 
     return parser.parse_args(args=args)
 
@@ -222,6 +228,7 @@ def normalize_flags(flags, user_config):
     # toolkit on his or her machine.
     pipeline_args['root_dir'] = root_dir
     pipeline_args['toolkit_path'] = user_config.local.toolkit
+    pipeline_args['generator_args'] = flags.generator_args.split(' ') or None
 
     artman_config_path = flags.config
     if not os.path.isfile(artman_config_path):
