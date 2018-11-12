@@ -119,7 +119,7 @@ class GapicCodeGenTask(task_base.TaskBase):
         args = args + gapic_args
 
         if generator_args:
-          args = args + generator_args
+          args = args + generator_args.split(' ')
 
         gapic_artifact = ''
         if aspect == 'ALL':
