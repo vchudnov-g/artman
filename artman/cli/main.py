@@ -167,7 +167,7 @@ def parse_args(*args):
         help=('[Optional] Specify docker image used by artman when running in '
               'a Docker instance. Default to `%s`' % ARTMAN_DOCKER_IMAGE))
     parser.add_argument(
-        '--generator_args',
+        '--generator-args',
         type=str,
         default=None,
         help='Additional arguments to pass to gapic-generator')
